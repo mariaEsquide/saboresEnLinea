@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40">
+	<DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+		<Author/>
+		<Title/>
+		<Description/>
+		<Subject/>
+	</DocumentProperties>
+	<Styles>
+		<Style ss:ID="HyperlinkId" ss:Name="Hyperlink">
+			<Font ss:Color="#0000ff"/>
+		</Style>
+		<Style ss:ID="1">
+			<NumberFormat ss:Format="yyyy-M-d HH:mm:ss AM/PM"/>
+		</Style>
+		<Style ss:ID="21">
+			<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="serif" ss:Size="10.0" ss:Color="#000000"/>
+		</Style>
+		<Style ss:ID="23">
+			<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="serif" ss:Size="10.0" ss:Color="#000000"/>
+		</Style>
+		<Style ss:ID="24">
+			<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="serif" ss:Size="10.0" ss:Color="#fff8f0"/>
+			<Interior ss:Color="#996515" ss:Pattern="Solid"/>
+		</Style>
+		<Style ss:ID="20">
+			<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="serif" ss:Size="16.0" ss:Color="#fff8f0"/>
+			<Interior ss:Color="#996515" ss:Pattern="Solid"/>
+		</Style>
+		<Style ss:ID="22">
+			<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="serif" ss:Size="10.0" ss:Color="#fff8f0"/>
+			<Interior ss:Color="#996515" ss:Pattern="Solid"/>
+		</Style>
+		<Style ss:ID="25">
+			<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="serif" ss:Size="10.0" ss:Color="#000000"/>
+			<Interior ss:Color="#996515" ss:Pattern="Solid"/>
+		</Style>
+	</Styles>
+	<Names>
+		<NamedRange ss:Name="__bookmark_1" ss:RefersTo="Report!R3C1:R19C4"/>
+	</Names>
+
+<Worksheet ss:Name="Report">
+	<ss:Table>
+		<ss:Column ss:Width="144.0" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="144.0" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="144.0" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="144.0" ss:AutoFitWidth="0"/>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="20" ss:MergeAcross="3">
+				<Data ss:Type="String">Usuarios Más Activos</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21" ss:MergeAcross="3"/>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="22">
+				<Data ss:Type="String">nombre</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="22">
+				<Data ss:Type="String">email</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="22">
+				<Data ss:Type="String">recetas_creadas</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="22">
+				<Data ss:Type="String">valoraciones_hechas</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">user</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">usuario@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">6</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">9</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">admin</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">admin@saboresenlinea.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">7</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">5</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">arantza</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">arantza@prueba.es</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">2</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">carlos</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">carlos@prueba.es</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">maria</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">maria@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">juan</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">juan@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">laura</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">laura@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">pedro</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">pedro@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">ana</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">ana@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">luis</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">luis@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">sofia</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">sofia@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">miguel</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">miguel@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">carmen</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">carmen@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">javier</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">javier@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21">
+				<Data ss:Type="String">Olatz</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="21">
+				<Data ss:Type="String">olatz@ejemplo.com</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="23">
+				<Data ss:Type="Number">0</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="24"/>
+			<Cell ss:Index="2" ss:StyleID="24"/>
+			<Cell ss:Index="3" ss:StyleID="24"/>
+			<Cell ss:Index="4" ss:StyleID="24"/>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="25" ss:MergeAcross="3"/>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="21" ss:MergeAcross="3">
+				<Data ss:Type="String">19/05/2025 21:31</Data>
+			</Cell>
+		</Row>
+	</ss:Table>
+	<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+		<PageSetup>
+			<PageMargins x:Bottom="0.25" x:Left="0.25" x:Right="0.25" x:Top="0.25"/>
+		</PageSetup>
+		<Print>
+			<PaperSizeIndex>9</PaperSizeIndex>
+		</Print>
+	</WorksheetOptions>
+</Worksheet>
+</Workbook>
