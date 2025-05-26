@@ -4,23 +4,23 @@
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="bidiLayoutOrientation">ltr</property>
-    <property name="imageDPI">120</property>
+    <property name="imageDPI">96</property>
     <data-sources>
-        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="MySQL Sabores" id="4">
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="SaboresDataSource" id="7">
             <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
                 <ex-property>
                     <name>contentBidiFormatStr</name>
                     <value>ILYNN</value>
                 </ex-property>
                 <ex-property>
                     <name>disabledContentBidiFormatStr</name>
-                </ex-property>
-                <ex-property>
-                    <name>disabledMetadataBidiFormatStr</name>
-                </ex-property>
-                <ex-property>
-                    <name>metadataBidiFormatStr</name>
-                    <value>ILYNN</value>
                 </ex-property>
             </list-property>
             <property name="odaDriverClass">com.mysql.cj.jdbc.Driver</property>
@@ -30,24 +30,28 @@
         </oda-data-source>
     </data-sources>
     <data-sets>
-        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Categorias" id="5">
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="CategoriasDataSet" id="8">
             <list-property name="columnHints">
                 <structure>
                     <property name="columnName">nombre</property>
+                    <property name="analysis">dimension</property>
                     <text-property name="displayName">nombre</text-property>
                     <text-property name="heading">nombre</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">num_recetas</property>
+                    <property name="analysis">measure</property>
                     <text-property name="displayName">num_recetas</text-property>
                     <text-property name="heading">num_recetas</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">puntuacion_media</property>
+                    <property name="analysis">measure</property>
                     <text-property name="displayName">puntuacion_media</text-property>
                     <text-property name="heading">puntuacion_media</text-property>
                 </structure>
             </list-property>
+            <list-property name="parameters"/>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
                     <structure>
@@ -58,16 +62,16 @@
                     <structure>
                         <property name="position">2</property>
                         <property name="name">num_recetas</property>
-                        <property name="dataType">decimal</property>
+                        <property name="dataType">integer</property>
                     </structure>
                     <structure>
                         <property name="position">3</property>
                         <property name="name">puntuacion_media</property>
-                        <property name="dataType">decimal</property>
+                        <property name="dataType">float</property>
                     </structure>
                 </list-property>
             </structure>
-            <property name="dataSource">MySQL Sabores</property>
+            <property name="dataSource">SaboresDataSource</property>
             <list-property name="resultSet">
                 <structure>
                     <property name="position">1</property>
@@ -80,23 +84,26 @@
                     <property name="position">2</property>
                     <property name="name">num_recetas</property>
                     <property name="nativeName">num_recetas</property>
-                    <property name="dataType">decimal</property>
-                    <property name="nativeDataType">-5</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
                 </structure>
                 <structure>
                     <property name="position">3</property>
                     <property name="name">puntuacion_media</property>
                     <property name="nativeName">puntuacion_media</property>
-                    <property name="dataType">decimal</property>
-                    <property name="nativeDataType">3</property>
+                    <property name="dataType">float</property>
+                    <property name="nativeDataType">7</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[SELECT c.nombre, COUNT(r.id) AS num_recetas,
-       AVG(IFNULL((SELECT AVG(v.puntuacion) FROM valoraciones v WHERE v.receta_id = r.id), 0)) AS puntuacion_media
+            <xml-property name="queryText"><![CDATA[SELECT 
+    c.nombre,
+    COUNT(r.id) as num_recetas,
+    COALESCE(AVG(CAST(v.puntuacion AS DECIMAL(3,2))), 0) as puntuacion_media
 FROM categorias c
 LEFT JOIN recetas r ON c.id = r.categoria_id
+LEFT JOIN valoraciones v ON r.id = v.receta_id
 GROUP BY c.id, c.nombre
-ORDER BY num_recetas DESC]]></xml-property>
+ORDER BY num_recetas DESC, puntuacion_media DESC]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
@@ -110,9 +117,9 @@ ORDER BY num_recetas DESC]]></xml-property>
               <design:position>1</design:position>
             </design:identifier>
             <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
-            <design:precision>50</design:precision>
+            <design:precision>255</design:precision>
             <design:scale>0</design:scale>
-            <design:nullability>NotNullable</design:nullability>
+            <design:nullability>Nullable</design:nullability>
             <design:uiHints>
               <design:displayName>nombre</design:displayName>
             </design:uiHints>
@@ -120,7 +127,7 @@ ORDER BY num_recetas DESC]]></xml-property>
           <design:usageHints>
             <design:label>nombre</design:label>
             <design:formattingHints>
-              <design:displaySize>50</design:displaySize>
+              <design:displaySize>255</design:displaySize>
             </design:formattingHints>
           </design:usageHints>
         </design:resultColumnDefinitions>
@@ -130,8 +137,8 @@ ORDER BY num_recetas DESC]]></xml-property>
               <design:name>num_recetas</design:name>
               <design:position>2</design:position>
             </design:identifier>
-            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
-            <design:precision>19</design:precision>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>21</design:precision>
             <design:scale>0</design:scale>
             <design:nullability>NotNullable</design:nullability>
             <design:uiHints>
@@ -141,7 +148,7 @@ ORDER BY num_recetas DESC]]></xml-property>
           <design:usageHints>
             <design:label>num_recetas</design:label>
             <design:formattingHints>
-              <design:displaySize>19</design:displaySize>
+              <design:displaySize>21</design:displaySize>
             </design:formattingHints>
           </design:usageHints>
         </design:resultColumnDefinitions>
@@ -151,9 +158,9 @@ ORDER BY num_recetas DESC]]></xml-property>
               <design:name>puntuacion_media</design:name>
               <design:position>3</design:position>
             </design:identifier>
-            <design:nativeDataTypeCode>3</design:nativeDataTypeCode>
-            <design:precision>18</design:precision>
-            <design:scale>8</design:scale>
+            <design:nativeDataTypeCode>7</design:nativeDataTypeCode>
+            <design:precision>6</design:precision>
+            <design:scale>4</design:scale>
             <design:nullability>Nullable</design:nullability>
             <design:uiHints>
               <design:displayName>puntuacion_media</design:displayName>
@@ -162,40 +169,48 @@ ORDER BY num_recetas DESC]]></xml-property>
           <design:usageHints>
             <design:label>puntuacion_media</design:label>
             <design:formattingHints>
-              <design:displaySize>18</design:displaySize>
+              <design:displaySize>8</design:displaySize>
             </design:formattingHints>
           </design:usageHints>
         </design:resultColumnDefinitions>
       </design:resultSetColumns>
-      <design:criteria/>
     </design:resultSetDefinitions>
   </design:ResultSets>
 </model:DesignValues>]]></xml-property>
         </oda-data-set>
     </data-sets>
     <styles>
-        <style name="NewStyle" id="46">
-            <property name="backgroundColor">#8B4513</property>
-            <property name="fontSize">16pt</property>
-            <property name="color">#FFF8F0</property>
-            <property name="textAlign">center</property>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
         </style>
-        <style name="NewStyle1" id="47">
-            <property name="backgroundColor">#CD853F</property>
-            <property name="color">#FFF8F0</property>
-            <property name="textAlign">center</property>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
         </style>
-        <style name="NewStyle2" id="48"/>
-        <style name="NewStyle3" id="49">
-            <property name="backgroundColor">#996515</property>
-            <property name="color">#FFF8F0</property>
-        </style>
-        <style name="NewStyle4" id="50">
-            <property name="backgroundColor">#996515</property>
-            <property name="color">#FFF8F0</property>
-        </style>
-        <style name="NewStyle5" id="53">
-            <property name="backgroundColor">#996515</property>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
         </style>
     </styles>
     <page-setup>
@@ -209,13 +224,16 @@ ORDER BY num_recetas DESC]]></xml-property>
         </simple-master-page>
     </page-setup>
     <body>
-        <label id="6">
-            <property name="style">NewStyle</property>
+        <label id="9">
+            <property name="fontSize">18pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#8B4513</property>
+            <property name="marginBottom">20pt</property>
+            <property name="textAlign">center</property>
             <text-property name="text">Categorías de Recetas</text-property>
         </label>
-        <label id="52"/>
-        <table id="23">
-            <property name="dataSet">Categorias</property>
+        <table id="10">
+            <property name="dataSet">CategoriasDataSet</property>
             <list-property name="boundDataColumns">
                 <structure>
                     <property name="name">nombre</property>
@@ -227,79 +245,74 @@ ORDER BY num_recetas DESC]]></xml-property>
                     <property name="name">num_recetas</property>
                     <text-property name="displayName">num_recetas</text-property>
                     <expression name="expression" type="javascript">dataSetRow["num_recetas"]</expression>
-                    <property name="dataType">decimal</property>
+                    <property name="dataType">integer</property>
                 </structure>
                 <structure>
                     <property name="name">puntuacion_media</property>
                     <text-property name="displayName">puntuacion_media</text-property>
                     <expression name="expression" type="javascript">dataSetRow["puntuacion_media"]</expression>
-                    <property name="dataType">decimal</property>
+                    <property name="dataType">float</property>
                 </structure>
             </list-property>
-            <column id="42"/>
-            <column id="43"/>
-            <column id="44"/>
+            <column id="21"/>
+            <column id="22"/>
+            <column id="23"/>
             <header>
-                <row id="24">
-                    <property name="style">NewStyle3</property>
-                    <cell id="25">
-                        <property name="style">NewStyle2</property>
-                        <label id="26">
+                <row id="11">
+                    <property name="backgroundColor">#B8860B</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="color">white</property>
+                    <cell id="12">
+                        <label id="13">
                             <text-property name="text">nombre</text-property>
                         </label>
                     </cell>
-                    <cell id="27">
-                        <property name="style">NewStyle2</property>
-                        <label id="28">
+                    <cell id="14">
+                        <label id="15">
                             <text-property name="text">num_recetas</text-property>
                         </label>
                     </cell>
-                    <cell id="29">
-                        <property name="style">NewStyle2</property>
-                        <label id="30">
+                    <cell id="16">
+                        <label id="17">
                             <text-property name="text">puntuacion_media</text-property>
                         </label>
                     </cell>
                 </row>
             </header>
             <detail>
-                <row id="31">
-                    <cell id="32">
-                        <property name="style">NewStyle2</property>
-                        <data id="33">
+                <row id="18">
+                    <cell id="19">
+                        <data id="24">
                             <property name="resultSetColumn">nombre</property>
                         </data>
                     </cell>
-                    <cell id="34">
-                        <property name="style">NewStyle2</property>
-                        <data id="35">
+                    <cell id="20">
+                        <data id="25">
                             <property name="resultSetColumn">num_recetas</property>
                         </data>
                     </cell>
-                    <cell id="36">
-                        <property name="style">NewStyle2</property>
-                        <data id="37">
+                    <cell id="26">
+                        <data id="27">
+                            <structure name="numberFormat">
+                                <property name="category">Fixed</property>
+                                <property name="pattern">###0.##</property>
+                            </structure>
                             <property name="resultSetColumn">puntuacion_media</property>
                         </data>
                     </cell>
                 </row>
             </detail>
-            <footer>
-                <row id="38">
-                    <property name="style">NewStyle4</property>
-                    <cell id="39">
-                        <property name="style">NewStyle2</property>
-                    </cell>
-                    <cell id="40">
-                        <property name="style">NewStyle2</property>
-                    </cell>
-                    <cell id="41">
-                        <property name="style">NewStyle2</property>
-                    </cell>
-                </row>
-            </footer>
         </table>
-        <extended-item extensionName="Chart" id="45">
+        <label id="28">
+            <property name="fontSize">16pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#8B4513</property>
+            <property name="marginTop">30pt</property>
+            <property name="marginBottom">15pt</property>
+            <property name="textAlign">center</property>
+            <text-property name="text">Distribución de recetas por categoría</text-property>
+        </label>
+        <extended-item extensionName="Chart" id="30">
             <xml-property name="xmlRepresentation"><![CDATA[<model:ChartWithAxes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:attribute="http://www.birt.eclipse.org/ChartModelAttribute" xmlns:data="http://www.birt.eclipse.org/ChartModelData" xmlns:layout="http://www.birt.eclipse.org/ChartModelLayout" xmlns:model="http://www.birt.eclipse.org/ChartModel" xmlns:type="http://www.birt.eclipse.org/ChartModelType">
   <Version>2.6.1</Version>
   <Type>Tube Chart</Type>
@@ -333,13 +346,10 @@ ORDER BY num_recetas DESC]]></xml-property>
         </Color>
         <Visible>false</Visible>
       </Outline>
-      <Background xsi:type="attribute:ColorDefinition">
-        <Transparency>255</Transparency>
-        <Red>146</Red>
-        <Green>98</Green>
-        <Blue>18</Blue>
-      </Background>
-      <Visible>true</Visible>
+      <Visible>false</Visible>
+      <Cursor>
+        <Type>Auto</Type>
+      </Cursor>
       <Label>
         <Caption>
           <Value>Distribución de recetas por categoría</Value>
@@ -353,10 +363,10 @@ ORDER BY num_recetas DESC]]></xml-property>
           </Font>
         </Caption>
         <Background xsi:type="attribute:ColorDefinition">
-          <Transparency>255</Transparency>
+          <Transparency>0</Transparency>
           <Red>255</Red>
-          <Green>225</Green>
-          <Blue>181</Blue>
+          <Green>255</Green>
+          <Blue>255</Blue>
         </Background>
         <Outline>
           <Style>Solid</Style>
@@ -368,12 +378,6 @@ ORDER BY num_recetas DESC]]></xml-property>
             <Blue>0</Blue>
           </Color>
         </Outline>
-        <ShadowColor>
-          <Transparency>255</Transparency>
-          <Red>255</Red>
-          <Green>255</Green>
-          <Blue>0</Blue>
-        </ShadowColor>
         <Insets>
           <Top>0.0</Top>
           <Left>2.0</Left>
@@ -411,38 +415,10 @@ ORDER BY num_recetas DESC]]></xml-property>
         </Color>
         <Visible>false</Visible>
       </Outline>
-      <Background xsi:type="attribute:Gradient">
-        <StartColor>
-          <Transparency>255</Transparency>
-          <Red>225</Red>
-          <Green>145</Green>
-          <Blue>142</Blue>
-        </StartColor>
-        <EndColor>
-          <Transparency>255</Transparency>
-          <Red>255</Red>
-          <Green>204</Green>
-          <Blue>153</Blue>
-        </EndColor>
-      </Background>
       <Visible>true</Visible>
       <HorizontalSpacing>5</HorizontalSpacing>
       <VerticalSpacing>5</VerticalSpacing>
       <ClientArea>
-        <Background xsi:type="attribute:Gradient">
-          <StartColor>
-            <Transparency>255</Transparency>
-            <Red>225</Red>
-            <Green>196</Green>
-            <Blue>0</Blue>
-          </StartColor>
-          <EndColor>
-            <Transparency>255</Transparency>
-            <Red>255</Red>
-            <Green>255</Green>
-            <Blue>0</Blue>
-          </EndColor>
-        </Background>
         <Outline>
           <Style>Solid</Style>
           <Thickness>0</Thickness>
@@ -491,6 +467,9 @@ ORDER BY num_recetas DESC]]></xml-property>
         <Visible>false</Visible>
       </Outline>
       <Visible>true</Visible>
+      <Cursor>
+        <Type>Auto</Type>
+      </Cursor>
       <ClientArea>
         <Outline>
           <Style>Solid</Style>
@@ -530,7 +509,7 @@ ORDER BY num_recetas DESC]]></xml-property>
         <Visible>true</Visible>
       </Separator>
       <Position>Right</Position>
-      <ItemType>Categories</ItemType>
+      <ItemType>Series</ItemType>
       <Title>
         <Caption>
           <Value></Value>
@@ -603,7 +582,7 @@ ORDER BY num_recetas DESC]]></xml-property>
   </ExtendedProperties>
   <SampleData>
     <BaseSampleData>
-      <DataSetRepresentation>6,4,12,8,10</DataSetRepresentation>
+      <DataSetRepresentation>'A','B','C','D','E'</DataSetRepresentation>
     </BaseSampleData>
     <OrthogonalSampleData>
       <DataSetRepresentation>6,4,12,8,10</DataSetRepresentation>
@@ -645,10 +624,10 @@ ORDER BY num_recetas DESC]]></xml-property>
     <Visible>false</Visible>
   </EmptyMessage>
   <Axes>
-    <Type>Linear</Type>
+    <Type>Text</Type>
     <Title>
       <Caption>
-        <Value>X-Axis Title</Value>
+        <Value>Categorias</Value>
         <Font>
           <Size>14.0</Size>
           <Bold>true</Bold>
@@ -680,14 +659,14 @@ ORDER BY num_recetas DESC]]></xml-property>
         <Bottom>0.0</Bottom>
         <Right>3.0</Right>
       </Insets>
-      <Visible>false</Visible>
+      <Visible>true</Visible>
     </Title>
     <TitlePosition>Below</TitlePosition>
     <AssociatedAxes>
       <Type>Linear</Type>
       <Title>
         <Caption>
-          <Value>Y-Axis Title</Value>
+          <Value>Número de Recetas</Value>
           <Font>
             <Size>14.0</Size>
             <Bold>true</Bold>
@@ -719,7 +698,7 @@ ORDER BY num_recetas DESC]]></xml-property>
           <Bottom>0.0</Bottom>
           <Right>3.0</Right>
         </Insets>
-        <Visible>false</Visible>
+        <Visible>true</Visible>
       </Title>
       <TitlePosition>Left</TitlePosition>
       <SeriesDefinitions>
@@ -949,13 +928,13 @@ ORDER BY num_recetas DESC]]></xml-property>
             <Visible>false</Visible>
           </Label>
           <DataDefinition>
-            <Definition>row[&quot;nombre&quot;]</Definition>
+            <Definition>row[&quot;num_recetas&quot;]</Definition>
             <Grouping>
               <GroupType>Text</GroupType>
               <AggregateExpression>Sum</AggregateExpression>
             </Grouping>
           </DataDefinition>
-          <SeriesIdentifier>Recetas</SeriesIdentifier>
+          <SeriesIdentifier>Series 1</SeriesIdentifier>
           <DataPoint>
             <Components>
               <Type>Orthogonal_Value</Type>
@@ -975,6 +954,12 @@ ORDER BY num_recetas DESC]]></xml-property>
             </Action>
           </Triggers>
           <Riser>Tube</Riser>
+          <RiserOutline>
+            <Transparency>255</Transparency>
+            <Red>215</Red>
+            <Green>139</Green>
+            <Blue>55</Blue>
+          </RiserOutline>
         </Series>
         <Grouping>
           <GroupType>Text</GroupType>
@@ -1001,10 +986,10 @@ ORDER BY num_recetas DESC]]></xml-property>
           </Font>
         </Caption>
         <Background xsi:type="attribute:ColorDefinition">
-          <Transparency>255</Transparency>
+          <Transparency>0</Transparency>
           <Red>255</Red>
-          <Green>242</Green>
-          <Blue>230</Blue>
+          <Green>255</Green>
+          <Blue>255</Blue>
         </Background>
         <Outline>
           <Style>Solid</Style>
@@ -1016,12 +1001,6 @@ ORDER BY num_recetas DESC]]></xml-property>
             <Blue>0</Blue>
           </Color>
         </Outline>
-        <ShadowColor>
-          <Transparency>255</Transparency>
-          <Red>255</Red>
-          <Green>255</Green>
-          <Blue>153</Blue>
-        </ShadowColor>
         <Insets>
           <Top>0.0</Top>
           <Left>2.0</Left>
@@ -1320,7 +1299,7 @@ ORDER BY num_recetas DESC]]></xml-property>
           <Visible>false</Visible>
         </Label>
         <DataDefinition>
-          <Definition>row[&quot;num_recetas&quot;]</Definition>
+          <Definition>row[&quot;nombre&quot;]</Definition>
         </DataDefinition>
         <SeriesIdentifier></SeriesIdentifier>
         <DataPoint>
@@ -1334,7 +1313,7 @@ ORDER BY num_recetas DESC]]></xml-property>
       </Series>
       <Grouping>
         <Enabled>true</Enabled>
-        <GroupType>Numeric</GroupType>
+        <GroupType>Text</GroupType>
         <AggregateExpression>Sum</AggregateExpression>
       </Grouping>
     </SeriesDefinitions>
@@ -1358,10 +1337,10 @@ ORDER BY num_recetas DESC]]></xml-property>
         </Font>
       </Caption>
       <Background xsi:type="attribute:ColorDefinition">
-        <Transparency>255</Transparency>
+        <Transparency>0</Transparency>
         <Red>255</Red>
-        <Green>204</Green>
-        <Blue>153</Blue>
+        <Green>255</Green>
+        <Blue>255</Blue>
       </Background>
       <Outline>
         <Style>Solid</Style>
@@ -1373,12 +1352,6 @@ ORDER BY num_recetas DESC]]></xml-property>
           <Blue>0</Blue>
         </Color>
       </Outline>
-      <ShadowColor>
-        <Transparency>255</Transparency>
-        <Red>255</Red>
-        <Green>255</Green>
-        <Blue>0</Blue>
-      </ShadowColor>
       <Insets>
         <Top>0.0</Top>
         <Left>2.0</Left>
@@ -1450,6 +1423,9 @@ ORDER BY num_recetas DESC]]></xml-property>
     <PrimaryAxis>true</PrimaryAxis>
     <CategoryAxis>true</CategoryAxis>
     <Percent>false</Percent>
+    <Cursor>
+      <Type>Auto</Type>
+    </Cursor>
   </Axes>
   <Orientation>Vertical</Orientation>
   <UnitSpacing>50.0</UnitSpacing>
@@ -1465,9 +1441,9 @@ ORDER BY num_recetas DESC]]></xml-property>
 ]]></xml-property>
             <property name="outputFormat">SVG</property>
             <property name="inheritColumns">true</property>
-            <property name="height">352.2pt</property>
+            <property name="height">286.5pt</property>
             <property name="width">573pt</property>
-            <property name="dataSet">Categorias</property>
+            <property name="dataSet">CategoriasDataSet</property>
             <list-property name="boundDataColumns">
                 <structure>
                     <property name="name">nombre</property>
@@ -1479,18 +1455,15 @@ ORDER BY num_recetas DESC]]></xml-property>
                     <property name="name">num_recetas</property>
                     <text-property name="displayName">num_recetas</text-property>
                     <expression name="expression" type="javascript">dataSetRow["num_recetas"]</expression>
-                    <property name="dataType">decimal</property>
+                    <property name="dataType">integer</property>
                 </structure>
                 <structure>
                     <property name="name">puntuacion_media</property>
                     <text-property name="displayName">puntuacion_media</text-property>
                     <expression name="expression" type="javascript">dataSetRow["puntuacion_media"]</expression>
-                    <property name="dataType">decimal</property>
+                    <property name="dataType">float</property>
                 </structure>
             </list-property>
         </extended-item>
-        <label id="51">
-            <property name="style">NewStyle5</property>
-        </label>
     </body>
 </report>
