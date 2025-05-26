@@ -415,6 +415,20 @@ ORDER BY num_recetas DESC, puntuacion_media DESC]]></xml-property>
         </Color>
         <Visible>false</Visible>
       </Outline>
+      <Background xsi:type="attribute:Gradient">
+        <StartColor>
+          <Transparency>255</Transparency>
+          <Red>225</Red>
+          <Green>145</Green>
+          <Blue>142</Blue>
+        </StartColor>
+        <EndColor>
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>204</Green>
+          <Blue>153</Blue>
+        </EndColor>
+      </Background>
       <Visible>true</Visible>
       <HorizontalSpacing>5</HorizontalSpacing>
       <VerticalSpacing>5</VerticalSpacing>
@@ -466,7 +480,7 @@ ORDER BY num_recetas DESC, puntuacion_media DESC]]></xml-property>
         </Color>
         <Visible>false</Visible>
       </Outline>
-      <Visible>true</Visible>
+      <Visible>false</Visible>
       <Cursor>
         <Type>Auto</Type>
       </Cursor>
@@ -1465,5 +1479,57 @@ ORDER BY num_recetas DESC, puntuacion_media DESC]]></xml-property>
                 </structure>
             </list-property>
         </extended-item>
+        <label id="31">
+            <property name="backgroundAttachment">scroll</property>
+            <property name="backgroundPositionX">0%</property>
+            <property name="backgroundPositionY">0%</property>
+            <property name="backgroundRepeat">repeat</property>
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="fontStyle">normal</property>
+            <property name="fontVariant">normal</property>
+            <property name="color">white</property>
+            <property name="textLineThrough">none</property>
+            <property name="textDecoration">normal</property>
+            <property name="textOverline">none</property>
+            <property name="textUnderline">none</property>
+            <property name="borderBottomColor">black</property>
+            <property name="borderBottomStyle">none</property>
+            <property name="borderBottomWidth">medium</property>
+            <property name="borderLeftColor">black</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderLeftWidth">medium</property>
+            <property name="borderRightColor">black</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderRightWidth">medium</property>
+            <property name="borderTopColor">black</property>
+            <property name="borderTopStyle">none</property>
+            <property name="borderTopWidth">medium</property>
+            <property name="marginTop">0pt</property>
+            <property name="marginLeft">0pt</property>
+            <property name="marginBottom">0pt</property>
+            <property name="marginRight">0pt</property>
+            <property name="paddingTop">1pt</property>
+            <property name="paddingLeft">1pt</property>
+            <property name="paddingBottom">1pt</property>
+            <property name="paddingRight">1pt</property>
+            <property name="textAlign">center</property>
+            <property name="letterSpacing">normal</property>
+            <property name="lineHeight">normal</property>
+            <property name="orphans">2</property>
+            <property name="textTransform">none</property>
+            <property name="whiteSpace">normal</property>
+            <property name="widows">2</property>
+            <property name="wordSpacing">normal</property>
+            <property name="display">block</property>
+            <property name="pageBreakAfter">auto</property>
+            <property name="pageBreakBefore">auto</property>
+            <property name="pageBreakInside">auto</property>
+            <property name="showIfBlank">false</property>
+            <property name="canShrink">false</property>
+            <property name="overflow">visible</property>
+            <text-property name="text"></text-property>
+        </label>
     </body>
 </report>
