@@ -125,6 +125,7 @@ public class CategoriaManagementFrame extends BaseFrame implements Serializable 
 		descripcionArea.setLineWrap(true);
 		descripcionArea.setWrapStyleWord(true);
 		JScrollPane scrollPane = new JScrollPane(descripcionArea);
+		EstiloManager.aplicarColorBarraDesplazamiento(scrollPane);
 
 		JButton guardarButton = new JButton("Guardar");
 		EstiloManager.aplicarEstiloBoton(guardarButton);
@@ -226,7 +227,7 @@ public class CategoriaManagementFrame extends BaseFrame implements Serializable 
 			descripcionArea.setLineWrap(true);
 			descripcionArea.setWrapStyleWord(true);
 			JScrollPane scrollPane = new JScrollPane(descripcionArea);
-
+			EstiloManager.aplicarColorBarraDesplazamiento(scrollPane);
 			JButton guardarButton = new JButton("Guardar");
 			EstiloManager.aplicarEstiloBoton(guardarButton);
 

@@ -480,8 +480,10 @@ public class RecetaCard extends JPanel implements Serializable {
 				gbc.gridx = 1;
 				gbc.gridy = 1;
 				gbc.weightx = 1.0;
+				JScrollPane scrollPane = new JScrollPane(descriptionArea);
 				formPanel.add(new JScrollPane(descriptionArea), gbc);
-
+				EstiloManager.aplicarColorBarraDesplazamiento(scrollPane);
+				
 				gbc.gridx = 0;
 				gbc.gridy = 2;
 				gbc.weightx = 0.0;
@@ -591,6 +593,7 @@ public class RecetaCard extends JPanel implements Serializable {
 				descScroll.setOpaque(false);
 				descScroll.getViewport().setOpaque(false);
 				descScroll.setAlignmentX(Component.LEFT_ALIGNMENT);
+				EstiloManager.aplicarColorBarraDesplazamiento(descScroll);
 
 				// Instrucciones
 				JLabel instrLabel = new JLabel("Instrucciones:");
@@ -606,6 +609,7 @@ public class RecetaCard extends JPanel implements Serializable {
 				instrScroll.setOpaque(false);
 				instrScroll.getViewport().setOpaque(false);
 				instrScroll.setAlignmentX(Component.LEFT_ALIGNMENT);
+				EstiloManager.aplicarColorBarraDesplazamiento(descScroll);
 
 				// agrega componentes al panel de información
 				infoPanel.add(titleLabel);
@@ -626,6 +630,7 @@ public class RecetaCard extends JPanel implements Serializable {
 
 				viewPanel.add(new JScrollPane(infoPanel), BorderLayout.CENTER);
 				viewPanel.add(closeButton, BorderLayout.SOUTH);
+				EstiloManager.aplicarColorBarraDesplazamiento(descScroll);
 
 				// configura y muestra el diálogo
 				dialog.setContentPane(viewPanel);

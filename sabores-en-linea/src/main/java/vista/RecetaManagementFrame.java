@@ -74,6 +74,7 @@ public class RecetaManagementFrame extends BaseFrame implements Serializable {
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setBorder(null);
+		EstiloManager.aplicarColorBarraDesplazamiento(scrollPane);
 
 		contentPanel.add(scrollPane, BorderLayout.CENTER);
 

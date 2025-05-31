@@ -190,7 +190,8 @@ public class RecetaViewFrame extends BaseFrame implements Serializable {
 		instruccionesScrollPane.setPreferredSize(new Dimension(600, 200));
 		instruccionesScrollPane.setBorder(null);
 		instruccionesScrollPane.setAlignmentX(Component.LEFT_ALIGNMENT);
-
+		EstiloManager.aplicarColorBarraDesplazamiento(instruccionesScrollPane); 
+		
 		infoPanel.add(instruccionesScrollPane);
 		infoPanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
@@ -278,7 +279,7 @@ public class RecetaViewFrame extends BaseFrame implements Serializable {
 		valoracionesScrollPane.setPreferredSize(new Dimension(600, 200));
 		valoracionesScrollPane.setBorder(null);
 		valoracionesScrollPane.setAlignmentX(Component.LEFT_ALIGNMENT);
-
+		EstiloManager.aplicarColorBarraDesplazamiento(valoracionesScrollPane);
 		infoPanel.add(valoracionesScrollPane);
 		infoPanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
@@ -315,6 +316,7 @@ public class RecetaViewFrame extends BaseFrame implements Serializable {
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setBorder(null);
+		EstiloManager.aplicarColorBarraDesplazamiento(scrollPane);
 
 		contentPanel.add(scrollPane, BorderLayout.CENTER);
 		mainPanel.add(contentPanel, BorderLayout.CENTER);
@@ -342,7 +344,7 @@ public class RecetaViewFrame extends BaseFrame implements Serializable {
 		comentarioTextArea.setLineWrap(true);
 		comentarioTextArea.setWrapStyleWord(true);
 		JScrollPane comentarioScrollPane = new JScrollPane(comentarioTextArea);
-
+		EstiloManager.aplicarColorBarraDesplazamiento(comentarioScrollPane);
 		// botón de guardar
 		JButton guardarButton = new JButton("Guardar Valoración");
 		EstiloManager.aplicarEstiloBoton(guardarButton);

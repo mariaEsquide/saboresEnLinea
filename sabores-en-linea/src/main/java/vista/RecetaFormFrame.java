@@ -203,6 +203,7 @@ public class RecetaFormFrame extends BaseFrame implements Serializable {
 		txtDescripcion.setWrapStyleWord(true);
 		JScrollPane scrollDescripcion = new JScrollPane(txtDescripcion);
 		formPanel.add(scrollDescripcion, gbc);
+		EstiloManager.aplicarColorBarraDesplazamiento(scrollDescripcion);
 
 		// instrucciones
 		gbc.gridx = 0;
@@ -218,6 +219,7 @@ public class RecetaFormFrame extends BaseFrame implements Serializable {
 		txtInstrucciones.setWrapStyleWord(true);
 		JScrollPane scrollInstrucciones = new JScrollPane(txtInstrucciones);
 		formPanel.add(scrollInstrucciones, gbc);
+		EstiloManager.aplicarColorBarraDesplazamiento(scrollInstrucciones);
 
 		contentPanel.add(formPanel);
 
@@ -234,7 +236,8 @@ public class RecetaFormFrame extends BaseFrame implements Serializable {
 		scrollIngredientes.setOpaque(false);
 		scrollIngredientes.getViewport().setOpaque(false);
 		scrollIngredientes.setPreferredSize(new Dimension(getWidth() - 50, 100));
-
+		EstiloManager.aplicarColorBarraDesplazamiento(scrollIngredientes);
+		
 		JPanel addIngredientePanel = new JPanel(new BorderLayout());
 		addIngredientePanel.setOpaque(false);
 		txtNuevoIngrediente = new JTextField();
@@ -263,7 +266,8 @@ public class RecetaFormFrame extends BaseFrame implements Serializable {
 		scrollFotos.setOpaque(false);
 		scrollFotos.getViewport().setOpaque(false);
 		scrollFotos.setPreferredSize(new Dimension(getWidth() - 50, 150));
-
+		EstiloManager.aplicarColorBarraDesplazamiento(scrollFotos); 
+		
 		btnAgregarFoto = new JButton("Agregar Foto");
 		EstiloManager.aplicarEstiloBoton(btnAgregarFoto);
 		btnAgregarFoto.addActionListener(e -> seleccionarFoto());
@@ -286,7 +290,8 @@ public class RecetaFormFrame extends BaseFrame implements Serializable {
 		scrollVideos.setOpaque(false);
 		scrollVideos.getViewport().setOpaque(false);
 		scrollVideos.setPreferredSize(new Dimension(getWidth() - 50, 150));
-
+		EstiloManager.aplicarColorBarraDesplazamiento(scrollVideos); 
+		
 		JPanel botonesVideoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		botonesVideoPanel.setOpaque(false);
 
@@ -324,6 +329,7 @@ public class RecetaFormFrame extends BaseFrame implements Serializable {
 		scrollContent.getViewport().setOpaque(false);
 		scrollContent.setBorder(null);
 		mainPanel.add(scrollContent, BorderLayout.CENTER);
+		EstiloManager.aplicarColorBarraDesplazamiento(scrollContent); 
 
 		cargarDatosReceta();
 	}
