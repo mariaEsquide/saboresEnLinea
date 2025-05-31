@@ -126,33 +126,156 @@ public class EstiloManager {
 
 		return panel;
 	}
-	// NUEVO: Aplica color corporativo a las barras de desplazamiento
-		public static void aplicarColorBarraDesplazamiento(JScrollPane scrollPane) {
-			// Personalizar solo el color de la barra de desplazamiento
-			scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
-				@Override
-				protected void configureScrollBarColors() {
-					// Color del "thumb" (la parte móvil de la barra)
-					this.thumbColor = COLOR_BOTON;
-					
-					// Mantener el resto de colores por defecto
-					this.trackColor = UIManager.getColor("ScrollBar.track");
-					this.trackHighlightColor = UIManager.getColor("ScrollBar.trackHighlight");
-				}
-			});
-			
-			scrollPane.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
-				@Override
-				protected void configureScrollBarColors() {
-					// Color del "thumb" (la parte móvil de la barra)
-					this.thumbColor = COLOR_BOTON;
-					
-					// Mantener el resto de colores por defecto
-					this.trackColor = UIManager.getColor("ScrollBar.track");
-					this.trackHighlightColor = UIManager.getColor("ScrollBar.trackHighlight");
-				}
-			});
-		}
+	private static JButton crearBotonInvisible() {
+	    JButton boton = new JButton();
+	    boton.setPreferredSize(new Dimension(0, 0));
+	    boton.setMinimumSize(new Dimension(0, 0));
+	    boton.setMaximumSize(new Dimension(0, 0));
+	    boton.setVisible(false);
+	    return boton;
 	}
 
-	
+	// nuevo: 
+	public static void aplicarColorBarraDesplazamiento(JScrollPane scrollPane) {
+	    // Scrollbar vertical
+	    scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+	        private final int THUMB_RADIUS = 8;
+
+	        @Override
+	        protected void configureScrollBarColors() {
+	            // No usar thumbColor directamente porque pintamos custom
+	            this.trackColor = COLOR_FONDO;
+	        }
+
+	        @Override
+	        protected JButton createDecreaseButton(int orientation) {
+	            return crearBotonInvisible();
+	        }
+
+	        @Override
+	        protected JButton createIncreaseButton(int orientation) {
+	            return crearBotonInvisible();
+	        }
+
+	        @Override
+	        protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
+	            if (!c.isEnabled() || thumbBounds.width > c.getWidth() || thumbBounds.height > c.getHeight()) {
+	                return;
+	            }
+
+	            Graphics2D g2 = (Graphics2D) g.create();
+	            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+	            // degradado marrón claro a marrón oscuro (color corporativo)
+	            Color colorStart = new Color(205, 133, 63);  // marrón claro (COLOR_BOTON)
+	            Color colorEnd = new Color(139, 69, 19);     // marrón oscuro (COLOR_SECUNDARIO)
+
+	            GradientPaint gradient = new GradientPaint(
+	                thumbBounds.x, thumbBounds.y, colorStart,
+	                thumbBounds.x, thumbBounds.y + thumbBounds.height, colorEnd);
+
+	            // relleno con degradado redondeado
+	            g2.setPaint(gradient);
+	            g2.fillRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height, THUMB_RADIUS, THUMB_RADIUS);
+
+	            // borde brillante arriba para efecto 3D
+	            g2.setPaint(new GradientPaint(
+	                thumbBounds.x, thumbBounds.y,
+	                new Color(255, 230, 180, 180), // brillo dorado claro semi-transparente
+	                thumbBounds.x, thumbBounds.y + thumbBounds.height / 2,
+	                new Color(0, 0, 0, 0) // transparente
+	            ));
+	            g2.fillRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height / 2, THUMB_RADIUS, THUMB_RADIUS);
+
+	            // sombra suave abajo para volumen
+	            g2.setColor(new Color(0, 0, 0, 60));
+	            g2.drawRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width - 1, thumbBounds.height - 1, THUMB_RADIUS, THUMB_RADIUS);
+
+	            g2.dispose();
+	        }
+
+	        @Override
+	        protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
+	            Graphics2D g2 = (Graphics2D) g.create();
+	            g2.setColor(trackColor);
+	            g2.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);
+	            g2.dispose();
+	        }
+
+	        @Override
+	        protected Dimension getMinimumThumbSize() {
+	            return new Dimension(8, 30); // Barra más estrecha y con alto mínimo
+	        }
+	    });
+
+	    // Scrollbar horizontal (igual que vertical)
+	    scrollPane.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+	        private final int THUMB_RADIUS = 8;
+
+	        @Override
+	        protected void configureScrollBarColors() {
+	            this.trackColor = COLOR_FONDO;
+	        }
+
+	        @Override
+	        protected JButton createDecreaseButton(int orientation) {
+	            return crearBotonInvisible();
+	        }
+
+	        @Override
+	        protected JButton createIncreaseButton(int orientation) {
+	            return crearBotonInvisible();
+	        }
+
+	        @Override
+	        protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
+	            if (!c.isEnabled() || thumbBounds.width > c.getWidth() || thumbBounds.height > c.getHeight()) {
+	                return;
+	            }
+
+	            Graphics2D g2 = (Graphics2D) g.create();
+	            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+	            Color colorStart = new Color(205, 133, 63);
+	            Color colorEnd = new Color(139, 69, 19);
+
+	            GradientPaint gradient = new GradientPaint(
+	                thumbBounds.x, thumbBounds.y, colorStart,
+	                thumbBounds.x, thumbBounds.y + thumbBounds.height, colorEnd);
+
+	            g2.setPaint(gradient);
+	            g2.fillRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height, THUMB_RADIUS, THUMB_RADIUS);
+
+	            g2.setPaint(new GradientPaint(
+	                thumbBounds.x, thumbBounds.y,
+	                new Color(255, 230, 180, 180),
+	                thumbBounds.x, thumbBounds.y + thumbBounds.height / 2,
+	                new Color(0, 0, 0, 0)
+	            ));
+	            g2.fillRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height / 2, THUMB_RADIUS, THUMB_RADIUS);
+
+	            g2.setColor(new Color(0, 0, 0, 60));
+	            g2.drawRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width - 1, thumbBounds.height - 1, THUMB_RADIUS, THUMB_RADIUS);
+
+	            g2.dispose();
+	        }
+
+	        @Override
+	        protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
+	            Graphics2D g2 = (Graphics2D) g.create();
+	            g2.setColor(trackColor);
+	            g2.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);
+	            g2.dispose();
+	        }
+
+	        @Override
+	        protected Dimension getMinimumThumbSize() {
+	            return new Dimension(30, 8);
+	        }
+	    });
+
+	    // ajuste para suavizar el scroll
+	    scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+	    scrollPane.getHorizontalScrollBar().setUnitIncrement(16);
+	}
+}

@@ -63,6 +63,7 @@ public class MultimediaFrame extends BaseFrame implements Serializable {
 		JScrollPane scrollFotos = new JScrollPane(fotosPanel);
 		scrollFotos.setOpaque(false);
 		scrollFotos.getViewport().setOpaque(false);
+		
 
 		JButton btnAgregarFotos = new JButton("Agregar Fotos");
 		EstiloManager.aplicarEstiloBoton(btnAgregarFotos);
@@ -81,6 +82,7 @@ public class MultimediaFrame extends BaseFrame implements Serializable {
 		JScrollPane scrollVideos = new JScrollPane(videosPanel);
 		scrollVideos.setOpaque(false);
 		scrollVideos.getViewport().setOpaque(false);
+		
 
 		JPanel botonesVideo = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		botonesVideo.setOpaque(false);

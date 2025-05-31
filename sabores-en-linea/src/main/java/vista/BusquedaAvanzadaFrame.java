@@ -124,6 +124,7 @@ public class BusquedaAvanzadaFrame extends BaseFrame implements Serializable {
 		// ScrollPane para la tabla
 		JScrollPane scrollPane = new JScrollPane(resultadosTable);
 		scrollPane.setPreferredSize(new Dimension(700, 400));
+		EstiloManager.aplicarColorBarraDesplazamiento(scrollPane);
 
 		// panel para botón de ver receta
 		JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));

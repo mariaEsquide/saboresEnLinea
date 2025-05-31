@@ -49,6 +49,7 @@ public class UserManagementFrame extends BaseFrame implements Serializable {
 		// ScrollPane para la tabla
 		JScrollPane scrollPane = new JScrollPane(usuariosTable);
 		scrollPane.setPreferredSize(new Dimension(600, 400));
+		EstiloManager.aplicarColorBarraDesplazamiento(scrollPane);
 
 		// panel de botones
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 3, 10, 0));
