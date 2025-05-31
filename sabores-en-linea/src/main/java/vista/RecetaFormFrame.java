@@ -439,8 +439,8 @@ public class RecetaFormFrame extends BaseFrame implements Serializable {
 				}
 
 				// crea una foto temporal para mostrar en la interfaz
-				String nombreArchivo = selectedFile.getName();
-				FotoReceta foto = new FotoReceta(nombreArchivo, "", false, contenido, tipoMime);
+				String nombreArchivo = selectedFile.getAbsolutePath();
+				FotoReceta foto = new FotoReceta(nombreArchivo, "", true, contenido, tipoMime);
 
 				// agrega a la lista de fotos temporales
 				fotosTemporales.add(foto);
@@ -689,6 +689,17 @@ public class RecetaFormFrame extends BaseFrame implements Serializable {
 			// procesa fotos
 			for (FotoReceta foto : fotosTemporales) {
 				foto.setReceta(receta);
+				
+				// asegura que el valor de esPrincipal esté establecido
+				// si no se ha marcado, al menos que no quede en null
+				
+				if (foto.isEsPrincipal() != false) {
+			        foto.setEsPrincipal(true);
+					//if (foto.isEsPrincipal() != true && foto.isEsPrincipal() != false) {
+					//	foto.setEsPrincipal(false); // por defecto
+				}
+
+				
 				recetaController.agregarFotoAReceta(foto);
 
 			}

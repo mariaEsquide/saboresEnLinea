@@ -179,7 +179,7 @@ public class MultimediaFrame extends BaseFrame implements Serializable {
 
 					// crea objeto FotoReceta
 					FotoReceta foto = new FotoReceta();
-					foto.setNombreArchivo(file.getName());
+					foto.setNombreArchivo(file.getAbsolutePath());
 					foto.setContenido(contenido);
 					foto.setTipoMime(tipoMime);
 					// Por defecto, la primera foto es la principal si no hay otras

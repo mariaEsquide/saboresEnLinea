@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.net.URI;
 import java.net.URL;
@@ -201,7 +202,8 @@ public class RecetaCard extends JPanel implements Serializable {
 					}
 				}
 				// intenta cargar desde URL si el nombre de archivo es una URL
-				else if (foto.getNombreArchivo() != null && foto.getNombreArchivo().startsWith("http")) {
+				else if (foto.getNombreArchivo() != null && (foto.getNombreArchivo().startsWith("http") || foto.getNombreArchivo().startsWith("file"))) {
+					//else if (foto.getNombreArchivo() != null && foto.getNombreArchivo().startsWith("http")) {
 					// usa la URL como clave de caché
 					cacheKey = foto.getNombreArchivo();
 
@@ -231,6 +233,35 @@ public class RecetaCard extends JPanel implements Serializable {
 						System.err.println("Error al cargar imagen desde URL: " + e.getMessage());
 					}
 				}
+				
+				
+				
+				// intenta cargar desde archivo local si no es una URL
+				else if (foto.getNombreArchivo() != null) {
+					cacheKey = foto.getNombreArchivo();
+
+					if (imagenesCache.containsKey(cacheKey)) {
+						imageLabel.setIcon(imagenesCache.get(cacheKey));
+						return;
+					}
+
+					File file = new File(foto.getNombreArchivo());
+					if (file.exists()) {
+						try {
+							BufferedImage img = ImageIO.read(file);
+							if (img != null) {
+								ImageIcon icon = new ImageIcon(img);
+								imageLabel.setIcon(icon);
+								imagenesCache.put(cacheKey, icon);
+								return;
+							}
+						} catch (IOException ex) {
+							System.err.println("Error al cargar imagen desde archivo local: " + ex.getMessage());
+						}
+					} else {
+						System.err.println("Archivo local no encontrado: " + file.getAbsolutePath());
+					}
+				}
 			}
 
 			// Si no hay foto o error : imagen de fondo
@@ -241,6 +272,7 @@ public class RecetaCard extends JPanel implements Serializable {
 			mostrarImagenPorDefecto();
 		}
 	}
+
 
 	private void mostrarImagenPorDefecto() {
 		try {
