@@ -64,7 +64,7 @@ public class RecetaCard extends JPanel implements Serializable {
 	// configura la tarjeta
 
 	private void setupCard() {
-		// BorderLayout para mejor adaptabilidad
+		// BorderLayout : mejor adaptabilidad
 		setLayout(new BorderLayout(5, 5));
 		setBorder(BorderFactory.createLineBorder(CARD_BORDER, 1, true));
 		setBackground(CARD_BACKGROUND);
@@ -215,7 +215,7 @@ public class RecetaCard extends JPanel implements Serializable {
 
 					try {
 						System.out.println("Intentando cargar imagen desde URL: " + foto.getNombreArchivo());
-						// Crear URI primero y luego convertir a URL
+						// crea URI primero y luego convierte a URL
 						URI uri = new URI(foto.getNombreArchivo());
 						URL url = uri.toURL();
 						
@@ -313,7 +313,7 @@ public class RecetaCard extends JPanel implements Serializable {
 
 		for (int i = 0; i < 5; i++) {
 			JLabel estrella = new JLabel(i < numStars ? starFilled : starEmpty);
-			estrella.setFont(new Font("Dialog", Font.PLAIN, 16)); // Usa fuente Dialog que soporta Unicode
+			estrella.setFont(new Font("Dialog", Font.PLAIN, 16)); // usa fuente Dialog que soporta Unicode
 			estrella.setForeground(new Color(255, 215, 0)); // dorado
 			panel.add(estrella);
 		}

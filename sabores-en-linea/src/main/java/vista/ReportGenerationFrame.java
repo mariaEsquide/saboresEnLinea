@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.Map;
 
-// Ventana para la generación de informes BIRT.
+// Ventana para la generación de informes BIRT
  
 public class ReportGenerationFrame extends BaseFrame implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -63,15 +63,15 @@ public class ReportGenerationFrame extends BaseFrame implements Serializable {
         contentPanel.setLayout(new BorderLayout(10, 10));
         contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        // Panel de estadísticas
+        // panel de estadísticas
         estadisticasPanel = new JPanel(new GridLayout(3, 2, 10, 10));
         estadisticasPanel.setBorder(BorderFactory.createTitledBorder("Estadísticas"));
         cargarEstadisticas();
         
-        // Panel principal que contiene los informes y botones
+        // panel principal que contiene los informes y botones
         JPanel mainContentPanel = new JPanel(new BorderLayout(10, 10));
         
-        // Panel de informes disponibles
+        // panel de informes disponibles
         JPanel informesPanel = new JPanel(new GridLayout(3, 1, 10, 10));
         informesPanel.setBorder(BorderFactory.createTitledBorder("Informes Disponibles"));
         
@@ -119,7 +119,7 @@ public class ReportGenerationFrame extends BaseFrame implements Serializable {
         JDialog dialog = new JDialog(this, "Seleccionar Formato", true);
         dialog.setIconImage(getIconImage());
         
-        // Panel con el formulario
+        // panel con el formulario
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         panel.setBackground(EstiloManager.COLOR_FONDO);

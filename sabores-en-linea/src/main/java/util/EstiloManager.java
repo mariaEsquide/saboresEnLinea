@@ -5,7 +5,7 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.*;
 import java.awt.*;
 
-// Clase de utilidad para manejar los estilos de la interfaz gráfica.
+// Clase de utilidad para manejar los estilos de la interfaz gráfica
 
 public class EstiloManager {
 	// colores corporativos
@@ -126,7 +126,7 @@ public class EstiloManager {
 
 		return panel;
 	}
-	// NUEVO: Aplicar color corporativo a las barras de desplazamiento
+	// NUEVO: Aplica color corporativo a las barras de desplazamiento
 		public static void aplicarColorBarraDesplazamiento(JScrollPane scrollPane) {
 			// Personalizar solo el color de la barra de desplazamiento
 			scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {

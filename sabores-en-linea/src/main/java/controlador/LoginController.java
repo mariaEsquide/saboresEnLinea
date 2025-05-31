@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class LoginController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	// método : autenticar usuario
+	// método : autentificación usuario
 	public static boolean autenticarUsuario(String nombre, String password, JFrame parentFrame) {
 		try {
 			Usuario usuario = DatabaseUtil.autenticarUsuario(nombre, password);
@@ -50,7 +50,7 @@ public class LoginController implements Serializable {
 		}
 	}
 
-	// método : registrar un nuevo usuario
+	// método : registra un nuevo usuario
 	public static boolean registrarUsuario(String nombre, String email, String password, boolean esAdmin,
 			JFrame parentFrame) {
 		try {
@@ -78,7 +78,7 @@ public class LoginController implements Serializable {
 		}
 	}
 
-	// método : cerrar sesión
+	// método : cierra sesión
 	public static void cerrarSesion(JFrame currentFrame) {
 		SessionManager.cerrarSesion();
 

@@ -12,7 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
 
-// pantalla inicio sesión
+// Pantalla inicio sesión
 
 public class LoginFrame extends BaseFrame implements Serializable {
     private static final long serialVersionUID = 1L;

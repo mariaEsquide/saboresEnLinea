@@ -53,8 +53,7 @@ public class Receta implements Serializable {
 	@Column(name = "valoracion_promedio")
 	private double valoracionPromedio;
 
-	// Cambiado de LAZY (por defecto) a EAGER para evitar el error de inicialización
-	// perezosa
+	// EAGER : evita el error de inicialización perezosa de LAZY que tenia(por defecto)
 	@OneToMany(mappedBy = "receta", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<FotoReceta> fotos = new ArrayList<>();
 

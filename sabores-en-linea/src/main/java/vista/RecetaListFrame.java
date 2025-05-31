@@ -99,8 +99,7 @@ public class RecetaListFrame extends BaseFrame implements Serializable {
 		SwingUtilities.invokeLater(this::cargarRecetas);
 	}
 
-	// método : ajusta el tamaño de las tarjetas cuando cambia el tamaño de la
-	// ventana
+	// método : ajusta el tamaño de las tarjetas cuando cambia el tamaño de la ventana
 	private void ajustarTarjetas() {
 		// obtiene el ancho disponible para cada tarjeta
 		int anchoDisponible = scrollPane.getViewport().getWidth() - 40; // resta el padding

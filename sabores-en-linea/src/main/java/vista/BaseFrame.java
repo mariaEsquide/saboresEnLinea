@@ -24,7 +24,7 @@ public abstract class BaseFrame extends JFrame implements Serializable {
 		setSize(800, 600);
 		setLocationRelativeTo(null); // centra ventana
 		
-	    // establecer el icono de la aplicación
+	    // establece el icono de la aplicación
         try {
             
             ImageIcon icono = new ImageIcon(getClass().getResource("/img/icono_64x64.png"));

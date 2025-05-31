@@ -59,7 +59,7 @@ public class VideoReceta implements Serializable {
 		this.fechaSubida = new Date();
 	}
 
-	// constructor para videos almacenados en la base de datos
+	// constructor para videos almacenados en la BBDD
 	public VideoReceta(String nombreArchivo, String descripcion, Integer duracion, byte[] contenido, String tipoMime) {
 		this.nombreArchivo = nombreArchivo;
 		this.descripcion = descripcion;
@@ -131,11 +131,10 @@ public class VideoReceta implements Serializable {
 		this.fechaSubida = fechaSubida;
 	}
 
-	// método : cargar el contenido bajo demanda
+	// método : carga el contenido bajo demanda
 	public byte[] getContenido() {
 		if (contenido == null && id > 0 && !esVideoRemoto()) {
-			// Si el contenido es null pero tenemos un ID y no es un video remoto, lo
-			// cargamos
+			// Si el contenido es null pero tenemos un ID y no es un video remoto, lo cargamos
 			loadContenido();
 		}
 		return contenido;

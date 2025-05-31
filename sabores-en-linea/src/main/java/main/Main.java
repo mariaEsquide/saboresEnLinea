@@ -4,7 +4,7 @@ import javax.swing.*;
 import vista.LoginFrame;
 import util.HibernateUtil;
 
-// Clase principal que inicia la aplicación Sabores en Línea.
+// Clase principal que inicia la aplicación Sabores en Línea
  
 public class Main {
 

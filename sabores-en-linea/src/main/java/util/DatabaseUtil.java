@@ -65,7 +65,7 @@ public class DatabaseUtil implements Serializable {
         }
         
         try {
-        	 // metodo : obtener una conexión directa
+        	 // metodo : obtiene una conexión directa
             Session session = sessionFactory.openSession();
             Connection connection = session.doReturningWork(conn -> {
                 // devuelve una copia de la conexión para que no se cierre cuando se cierre la sesión

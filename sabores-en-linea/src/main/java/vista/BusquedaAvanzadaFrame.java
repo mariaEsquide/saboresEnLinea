@@ -34,7 +34,7 @@ public class BusquedaAvanzadaFrame extends BaseFrame implements Serializable {
 		this.usuarioActual = SessionManager.getUsuarioActual();
 		setupComponents();
 
-		// manejar cierre de ventana
+		// maneja el cierre de la ventana
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -114,7 +114,7 @@ public class BusquedaAvanzadaFrame extends BaseFrame implements Serializable {
 		resultadosTable = new JTable(tableModel);
 		EstiloManager.aplicarEstiloTabla(resultadosTable);
 
-		// configurar ancho de columnas
+		// configura ancho de columnas
 		resultadosTable.getColumnModel().getColumn(0).setPreferredWidth(50); // ID
 		resultadosTable.getColumnModel().getColumn(1).setPreferredWidth(200); // Título
 		resultadosTable.getColumnModel().getColumn(2).setPreferredWidth(100); // Categoría

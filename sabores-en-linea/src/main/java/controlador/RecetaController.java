@@ -43,8 +43,6 @@ public class RecetaController implements Serializable {
 		return recetas;
 	}
 
-	// agrega a la BBDD
-
 	public void agregarReceta(Receta receta) {
 		Session session = null;
 		Transaction tx = null;
