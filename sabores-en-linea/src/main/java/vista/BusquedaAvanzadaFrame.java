@@ -60,7 +60,9 @@ public class BusquedaAvanzadaFrame extends BaseFrame implements Serializable {
 		// componentes de búsqueda
 		busquedaField = new JTextField(20);
 		categoriaComboBox = new JComboBox<>(new String[] { "Todas", "Entrantes", "Platos principales", "Postres" });
+		EstiloManager.aplicarEstiloComboBox(categoriaComboBox);
 		dificultadComboBox = new JComboBox<>(new String[] { "Todas", "Fácil", "Media", "Difícil" });
+		EstiloManager.aplicarEstiloComboBox(dificultadComboBox);
 		buscarButton = new JButton("Buscar");
 		EstiloManager.aplicarEstiloBoton(buscarButton);
 

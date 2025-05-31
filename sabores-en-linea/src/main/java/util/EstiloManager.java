@@ -135,7 +135,7 @@ public class EstiloManager {
 	    return boton;
 	}
 
-	// nuevo: 
+	// aplicacion del estilo a la barra
 	public static void aplicarColorBarraDesplazamiento(JScrollPane scrollPane) {
 	    // Scrollbar vertical
 	    scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
@@ -278,4 +278,59 @@ public class EstiloManager {
 	    scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 	    scrollPane.getHorizontalScrollBar().setUnitIncrement(16);
 	}
+	
+	// aplicacion del estilo al combo
+	public static void aplicarEstiloComboBox(JComboBox<?> combo) {
+	    combo.setFont(FUENTE_BOTON);
+	    combo.setForeground(COLOR_TEXTO);
+	    combo.setBackground(COLOR_FONDO);
+	    combo.setOpaque(true);
+	    combo.setFocusable(false);
+	    combo.setBorder(BorderFactory.createLineBorder(COLOR_PRINCIPAL, 1)); // borde dorado
+
+	    // Estilo del despliegue
+	    combo.setRenderer(new DefaultListCellRenderer() {
+	        @Override
+	        public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+	                boolean isSelected, boolean cellHasFocus) {
+	            Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+	            c.setFont(FUENTE_BOTON);
+
+	            if (isSelected) {
+	                c.setBackground(COLOR_TABLA_HEADER); // beige para seleccionado
+	                c.setForeground(COLOR_TEXTO);        // marrón
+	            } else {
+	                c.setBackground(COLOR_FONDO);        // blanco hueso
+	                c.setForeground(COLOR_TEXTO);        // marrón
+	            }
+
+	            return c;
+	        }
+	    });
+
+	    // Cambiar flecha del combo
+	    combo.setUI(new javax.swing.plaf.basic.BasicComboBoxUI() {
+	        @Override
+	        protected JButton createArrowButton() {
+	            JButton button = new JButton();
+	            button.setBorder(BorderFactory.createEmptyBorder());
+	            button.setBackground(COLOR_FONDO);
+	            button.setOpaque(true);
+	            button.setContentAreaFilled(false);
+	            button.setIcon(new javax.swing.plaf.metal.MetalComboBoxIcon() {
+	                @Override
+	                public void paintIcon(Component c, Graphics g, int x, int y) {
+	                    g.setColor(COLOR_TEXTO); // flecha marrón
+	                    int mid = getIconWidth() / 2;
+	                    int height = getIconHeight() / 2;
+	                    g.fillPolygon(new int[] {x, x + getIconWidth(), x + mid}, new int[] {y, y, y + height}, 3);
+	                }
+	            });
+	            return button;
+	        }
+	    });
+	}
+
+
+
 }

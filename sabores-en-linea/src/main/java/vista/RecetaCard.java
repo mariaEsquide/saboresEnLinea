@@ -406,6 +406,7 @@ public class RecetaCard extends JPanel implements Serializable {
 
 				// componentes adicionales para editar más campos
 				JComboBox<String> dificultadComboBox = new JComboBox<>(new String[] { "Fácil", "Media", "Difícil" });
+				EstiloManager.aplicarEstiloComboBox(dificultadComboBox);
 				dificultadComboBox.setSelectedItem(recetaCompleta.getDificultad());
 
 				JSpinner tiempoSpinner = new JSpinner(

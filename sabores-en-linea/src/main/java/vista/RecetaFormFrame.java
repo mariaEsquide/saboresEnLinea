@@ -151,6 +151,7 @@ public class RecetaFormFrame extends BaseFrame implements Serializable {
 		for (Categoria categoria : categoriaController.obtenerTodasLasCategorias()) {
 			cbxCategoria.addItem(categoria);
 		}
+		EstiloManager.aplicarEstiloComboBox(cbxCategoria);
 		formPanel.add(cbxCategoria, gbc);
 
 		// tiempo de preparación
@@ -175,6 +176,7 @@ public class RecetaFormFrame extends BaseFrame implements Serializable {
 		gbc.gridx = 1;
 		gbc.weightx = 1.0;
 		cbxDificultad = new JComboBox<>(new String[] { "Fácil", "Media", "Difícil" });
+		EstiloManager.aplicarEstiloComboBox(cbxDificultad);
 		formPanel.add(cbxDificultad, gbc);
 
 		// porciones
