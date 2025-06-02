@@ -4,10 +4,12 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.*;
 import java.awt.*;
+import java.io.Serializable;
 
 // Clase de utilidad para manejar los estilos de la interfaz gráfica
 
-public class EstiloManager {
+public class EstiloManager implements Serializable {
+    private static final long serialVersionUID = 1L;
 	// colores corporativos
 	public static final Color COLOR_PRINCIPAL = new Color(153, 101, 21); // marron dorado
 	public static final Color COLOR_SECUNDARIO = new Color(139, 69, 19); // marron oscuro
@@ -204,7 +206,7 @@ public class EstiloManager {
 
 	        @Override
 	        protected Dimension getMinimumThumbSize() {
-	            return new Dimension(8, 30); // Barra más estrecha y con alto mínimo
+	            return new Dimension(8, 30); // barra más estrecha y con alto mínimo
 	        }
 	    });
 
@@ -290,7 +292,10 @@ public class EstiloManager {
 
 	    // Estilo del despliegue
 	    combo.setRenderer(new DefaultListCellRenderer() {
-	        @Override
+	        
+			private static final long serialVersionUID = 1L;
+
+			@Override
 	        public Component getListCellRendererComponent(JList<?> list, Object value, int index,
 	                boolean isSelected, boolean cellHasFocus) {
 	            Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
@@ -318,7 +323,10 @@ public class EstiloManager {
 	            button.setOpaque(true);
 	            button.setContentAreaFilled(false);
 	            button.setIcon(new javax.swing.plaf.metal.MetalComboBoxIcon() {
-	                @Override
+	              
+					private static final long serialVersionUID = 1L;
+
+					@Override
 	                public void paintIcon(Component c, Graphics g, int x, int y) {
 	                    g.setColor(COLOR_TEXTO); // flecha marrón
 	                    int mid = getIconWidth() / 2;
