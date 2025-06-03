@@ -11,7 +11,7 @@ public class Main {
     // método principal : inicia la aplicación
     
     public static void main(String[] args) {
-        System.out.println("Iniciando Sabores en Línea...");
+        System.out.println("Iniciando Sabores en Linea...");
 
         try {
             // configura el Look and Feel personalizado
@@ -29,7 +29,7 @@ public class Main {
                     // crea y muestra la ventana de login
                     LoginFrame loginFrame = new LoginFrame();
                     loginFrame.setVisible(true);
-                    System.out.println("Aplicación iniciada correctamente");
+                    System.out.println("Aplicacion iniciada correctamente");
                 } catch (Exception e) {
                     e.printStackTrace();
                     mostrarErrorInicializacion("Error al iniciar la interfaz: " + e.getMessage());
@@ -37,7 +37,7 @@ public class Main {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            mostrarErrorInicializacion("Error al inicializar la aplicación: " + e.getMessage());
+            mostrarErrorInicializacion("Error al inicializar la aplicacion: " + e.getMessage());
         }
     }
 
@@ -57,8 +57,8 @@ public class Main {
     private static void mostrarErrorInicializacion(String mensaje) {
         System.err.println(mensaje);
         JOptionPane.showMessageDialog(null,
-            mensaje + "\nLa aplicación se cerrará.",
-            "Error de Inicialización",
+            mensaje + "\nLa aplicacion se cerrara.",
+            "Error de Inicializacion",
             JOptionPane.ERROR_MESSAGE);
         System.exit(1);
     }
